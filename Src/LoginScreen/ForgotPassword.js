@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     width: 343,
-    height: 58,
+    height: 70,
   },
   SendButtonText:{
     color: '#FFFFFF',
