@@ -49,14 +49,15 @@ const SignUp = () => {
     }
   };
 
+
   const validatePassword = (password) => {
-    if (password.length < 6) {
-      setPasswordError('** Password must be at least 6 characters long **');
+    const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    if (!regex.test(password)) {
+      setPasswordError('** Password must be 6 to 16 characters long and contain at least one number, one special character, and one capital letter **');
     } else {
       setPasswordError('');
     }
   };
-
   const handleBlurName = () => {
     if (!name.trim()) {
       setNameError('** Please fill in your name **');
@@ -82,95 +83,95 @@ const SignUp = () => {
   };
   return (
     <View>
-    <StatusBar backgroundColor="#e6e6e6" barStyle="light-content" />
-    <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
-      <AntIcon name='left' size={30} color="#000" />
-    </TouchableOpacity>
-    <View style={styles.Title}>
-      <Text style={styles.TitleText}>Sign up</Text>
-    </View>
-
-    <View style={styles.maintextinput}>
-      <View style={styles.inputContainer}>
-        <Text style={styles.placeholder}>Name</Text>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#888"
-          placeholder='Mr. Muffin'
-          value={name}
-          onChangeText={(text) => {
-            setName(text);
-            validateName(text);
-          }}
-          onBlur={handleBlurName} // Add onBlur event handler
-        />
-        {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
+      <StatusBar backgroundColor="#e6e6e6" barStyle="light-content" />
+      <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
+        <AntIcon name='left' size={30} color="#000" />
+      </TouchableOpacity>
+      <View style={styles.Title}>
+        <Text style={styles.TitleText}>Sign up</Text>
       </View>
 
-      <View style={styles.inputContainer}>
-        <Text style={styles.placeholder}>Email</Text>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#888"
-          keyboardType="email-address"
-          placeholder='mrmuff@example.com'
-          value={email}
-          onChangeText={(text) => {
-            setEmail(text);
-            validateEmail(text);
-          }}
-          onBlur={handleBlurEmail} // Add onBlur event handler
-        />
-        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-      </View>
-
-      <View style={styles.inputContainer}>
-        <Text style={styles.placeholder}>Password</Text>
-        <TextInput
-          style={styles.input}
-          placeholderTextColor="#888"
-          secureTextEntry={true}
-          placeholder="Password"
-          value={password}
-          onChangeText={(text) => {
-            setPassword(text);
-            validatePassword(text);
-          }}
-          onBlur={handleBlurPassword} // Add onBlur event handler
-        />
-        {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-      </View>
-    </View>
-
-    <View style={styles.account}>
-      <TouchableOpacity onPress={navigateToLoginScreen}>
-        <View style={styles.accountTextContainer}>
-          <Text style={styles.accountText}>Already have an account?</Text>
-          <AntIcon name="arrowright" size={20} color="#DB3022" />
+      <View style={styles.maintextinput}>
+        <View style={styles.inputContainer}>
+          <Text style={styles.placeholder}>Name</Text>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="#888"
+            placeholder='Mr. Muffin'
+            value={name}
+            onChangeText={(text) => {
+              setName(text);
+              validateName(text);
+            }}
+            onBlur={handleBlurName}
+          />
+          {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
         </View>
-      </TouchableOpacity>
-    </View>
 
-    <View>
-      <TouchableOpacity style={styles.signInButton} onPress={navigateToMainScreen}>
-        <Text style={styles.signInButtonText}>SIGN UP</Text>
-      </TouchableOpacity>
-    </View>
+        <View style={styles.inputContainer}>
+          <Text style={styles.placeholder}>Email</Text>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="#888"
+            keyboardType="email-address"
+            placeholder='mrmuff@example.com'
+            value={email}
+            onChangeText={(text) => {
+              setEmail(text);
+              validateEmail(text);
+            }}
+            onBlur={handleBlurEmail}
+          />
+          {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
+        </View>
 
-    <View style={styles.footer}>
-      <Text style={styles.text}>Or sign up with social account</Text>
-      <View style={styles.iconContainer}>
-        <TouchableOpacity style={styles.icon}>
-          <FontAwesome name="google" size={30} color="#4285F4" />
-        </TouchableOpacity>
-        <View style={styles.gap} />
-        <TouchableOpacity style={styles.icon}>
-          <FontAwesome name="facebook" size={30} color="#3b5998" />
+        <View style={styles.inputContainer}>
+          <Text style={styles.placeholder}>Password</Text>
+          <TextInput
+            style={styles.input}
+            placeholderTextColor="#888"
+            secureTextEntry={true}
+            placeholder="Password"
+            value={password}
+            onChangeText={(text) => {
+              setPassword(text);
+              validatePassword(text);
+            }}
+            onBlur={handleBlurPassword}
+          />
+          {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
+        </View>
+      </View>
+
+      <View style={styles.account}>
+        <TouchableOpacity onPress={navigateToLoginScreen}>
+          <View style={styles.accountTextContainer}>
+            <Text style={styles.accountText}>Already have an account?</Text>
+            <AntIcon name="arrowright" size={20} color="#DB3022" />
+          </View>
         </TouchableOpacity>
       </View>
+
+      <View>
+        <TouchableOpacity style={styles.signInButton} onPress={navigateToMainScreen}>
+          <Text style={styles.signInButtonText}>SIGN UP</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.footer}>
+        <Text style={styles.text}>Or sign up with social account</Text>
+        <View style={styles.iconContainer}>
+          <TouchableOpacity style={styles.icon}>
+            <FontAwesome name="google" size={30} color="#4285F4" />
+          </TouchableOpacity>
+          <View style={styles.gap} />
+          <TouchableOpacity style={styles.icon}>
+            <FontAwesome name="facebook" size={30} color="#3b5998" />
+          </TouchableOpacity>
+        </View>
+      </View>
     </View>
-  </View>
-);
+  );
 };
 
 
