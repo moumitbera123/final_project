@@ -53,7 +53,7 @@ const SignUp = () => {
   const validatePassword = (password) => {
     const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     if (!regex.test(password)) {
-      setPasswordError('** Password must be 6 to 16 characters long and contain at least one number, one special character, and one capital letter **');
+      setPasswordError('** 6-16 chars, 1 number, 1 special char, 1 capital letter **');
     } else {
       setPasswordError('');
     }
@@ -82,7 +82,7 @@ const SignUp = () => {
     }
   };
   return (
-    <View>
+    <View style={styles.maincontainer}>
       <StatusBar backgroundColor="#e6e6e6" barStyle="light-content" />
       <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
         <AntIcon name='left' size={30} color="#000" />
@@ -249,7 +249,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     alignItems: 'center',
-    marginTop: 45,
+    marginTop: 22,
   },
   text: {
     textAlign: 'center',
@@ -273,4 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     marginTop: 5,
   },
+  maincontainer:{
+    marginTop:-35
+  }
 });
