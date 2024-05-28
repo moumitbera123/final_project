@@ -20,7 +20,7 @@ const Login = () => {
   };
 
   const navigateToForgotPasswordScreen = () => {
-    if (email.trim() && !emailError) { // Check if email is not empty and has no errors
+    if (email.trim() && !emailError) { 
       navigation.navigate('ForgotPassword');
     } else {
       alert('Please enter a valid email first');
@@ -90,7 +90,7 @@ const Login = () => {
                 setEmail(text);
                 validateEmail(text);
               }}
-              onBlur={handleBlurEmail} // Add onBlur event handler
+              onBlur={handleBlurEmail} 
             />
     
               {email.trim() && !emailError && (
@@ -114,7 +114,7 @@ const Login = () => {
               setPassword(text);
               validatePassword(text);
             }}
-            onBlur={handleBlurPassword} // Add onBlur event handler
+            onBlur={handleBlurPassword} 
           />
           {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
         </View>

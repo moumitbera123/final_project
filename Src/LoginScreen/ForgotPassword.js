@@ -1,32 +1,42 @@
-import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
-import React from 'react'
-import FontAwesome from 'react-native-vector-icons/FontAwesome'
-import AntIcon from 'react-native-vector-icons/AntDesign'
-import { useNavigation } from '@react-navigation/native'
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import AntIcon from 'react-native-vector-icons/AntDesign';
+import { useNavigation } from '@react-navigation/native';
 
 const ForgotPassword = () => {
-  const navigation = useNavigation()
+  const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [emailError, setEmailError] = useState('');
 
-  const navigateToLoginScreen =()=>{
-    navigation.navigate('Login')
-  }
+  const navigateToLoginScreen = () => {
+    navigation.navigate('Login');
+  };
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(email)) {
+      setEmailError('Not a valid email address. Should be your@gmail.com');
+    } else {
+      setEmailError('');
+    }
+  };
+
   return (
     <View>
-      <TouchableOpacity style={styles.AntIcons}  onPress={navigateToLoginScreen}>
+      <TouchableOpacity style={styles.AntIcons} onPress={navigateToLoginScreen}>
         <AntIcon name='left' size={30} color="#000" />
       </TouchableOpacity>
       <View style={styles.Title}>
-        <Text style={styles.TitleText}>Forgot password</Text>
+        <Text style={styles.TitleText}>Forgo password</Text>
       </View>
       <View style={styles.InputDescription}>
-      <Text style={styles.InputDescriptionText}>
-        Please, enter your email address. You will receive a link to create a new password via email.
-      </Text>
+        <Text style={styles.InputDescriptionText}>
+          Please, enter your email address. You will receive a link to create a new password via email.
+        </Text>
       </View>
-      
 
       <View style={styles.maintextinput}>
-        <View style={[styles.inputContainer, { borderColor: '#F01F0E', borderWidth: 1 }]}>
+        <View style={[styles.inputContainer, emailError ? { borderColor: '#F01F0E', borderWidth: 1 } : {}]}>
           <Text style={styles.placeholder}>Email</Text>
           <View style={styles.inputWrapper}>
             <TextInput
@@ -34,30 +44,36 @@ const ForgotPassword = () => {
               placeholderTextColor="#888"
               placeholder='email2'
               keyboardType='email-address'
-              
+              value={email}
+              onChangeText={(text) => {
+                setEmail(text);
+                validateEmail(text);
+              }}
             />
-            <View style={styles.closeicon}>
-            <AntIcon name='close' size={30} color='#F01F0E' />
-            </View>
-        
+            {emailError ? (
+              <View style={styles.closeicon}>
+                <AntIcon name='close' size={30} color='#F01F0E' />
+              </View>
+            ) : null}
           </View>
-
         </View>
       </View>
-      <View style={styles.Forgot}>
-        <Text style={styles.ForgotText}>Not a valid email address. Should be your@email.com</Text>
-      </View>
-      
+      {emailError ? (
+        <View style={styles.Forgot}>
+          <Text style={styles.ForgotText}>{emailError}</Text>
+        </View>
+      ) : null}
+
       <View>
         <TouchableOpacity style={styles.SendButton}>
           <Text style={styles.SendButtonText}>SEND</Text>
         </TouchableOpacity>
       </View>
     </View>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;
 
 const styles = StyleSheet.create({
   AntIcons: {
@@ -69,16 +85,16 @@ const styles = StyleSheet.create({
   TitleText: {
     fontSize: 42,
     color: "#222222",
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   Title: {
     marginTop: 10,
-    marginLeft: 28
+    marginLeft: 28,
   },
-  InputDescription:{
-    marginTop:100,
-    paddingHorizontal:35,
-    paddingVertical:20
+  InputDescription: {
+    marginTop: 100,
+    paddingHorizontal: 35,
+    paddingVertical: 20,
   },
   maintextinput: {
     justifyContent: 'center',
@@ -86,51 +102,43 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginTop: 2,
     marginLeft: 10,
-    marginRight:10,
-    
+    marginRight: 10,
   },
   inputContainer: {
     width: '100%',
     marginBottom: 20,
-    borderRadius:5,
-    height:90,
-    
+    borderRadius: 5,
+    height: 90,
   },
   placeholder: {
     color: '#888',
     marginBottom: 5,
     fontSize: 14,
-    padding:10
+    padding: 10,
   },
   inputWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginRight: 50,
     justifyContent: 'space-between',
-    paddingVertical:1,
-    paddingHorizontal:5,
-    marginBottom:10,
-    // marginTop:28,
-    // marginLeft:10
-   
+    paddingVertical: 1,
+    paddingHorizontal: 5,
+    marginBottom: 10,
   },
   input: {
-    width: '100%',
+    width: '85%',
     fontSize: 19,
     color: 'black',
-    padding:5,
-  
-    
+    padding: 5,
   },
-  Forgot:{
-    marginLeft:40,
+  Forgot: {
+    marginLeft: 40,
   },
-  ForgotText:{
-    color:'#F01F0E',
-    fontSize:13
+  ForgotText: {
+    color: '#F01F0E',
+    fontSize: 13,
   },
-  SendButton:{
-    backgroundColor: '#DB3022',   
+  SendButton: {
+    backgroundColor: '#DB3022',
     borderRadius: 25,
     marginLeft: 25,
     marginTop: 85,
@@ -139,16 +147,16 @@ const styles = StyleSheet.create({
     width: 343,
     height: 58,
   },
-  SendButtonText:{
+  SendButtonText: {
     color: '#FFFFFF',
     fontSize: 19,
   },
-  InputDescriptionText:{
-    fontSize:14,
-    fontWeight:'bold'
+  InputDescriptionText: {
+    fontSize: 14,
+    fontWeight: 'bold',
   },
-  closeicon:{
-    marginRight:10,
-    marginBottom:10
-  }
-})
+  closeicon: {
+    marginRight: 10,
+    marginBottom: 10,
+  },
+});
