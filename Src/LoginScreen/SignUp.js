@@ -20,7 +20,7 @@ const SignUp = () => {
     if (name.trim() && email.trim() && password.trim()) {
       navigation.navigate('MainScreen');
     } else {
-      // Show an error message or handle the case where inputs are not filled
+
       alert('Please fill in all fields');
     }
   };
@@ -82,7 +82,7 @@ const SignUp = () => {
   };
   return (
     <View>
-    <StatusBar backgroundColor="white" barStyle="light-content" />
+    <StatusBar backgroundColor="#e6e6e6" barStyle="light-content" />
     <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
       <AntIcon name='left' size={30} color="#000" />
     </TouchableOpacity>

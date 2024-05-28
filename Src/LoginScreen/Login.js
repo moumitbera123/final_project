@@ -68,7 +68,7 @@ const Login = () => {
 
   return (
     <View>
-      <StatusBar backgroundColor="white" barStyle="light-content" />
+      <StatusBar backgroundColor="#e6e6e6" barStyle="light-content" />
       <TouchableOpacity style={styles.AntIcons} onPress={navigateToSignUpScreen}>
         <AntIcon name='left' size={30} color="#000" />
       </TouchableOpacity>
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     marginTop: 80,
-    marginLeft: 20
+    marginLeft: 10
   },
   inputContainer: {
     width: '100%',
@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   input: {
-    width: '100%',
+    width: '90%',
     fontSize: 19,
     color: 'black',
   },
