@@ -17,7 +17,12 @@ const SignUp = () => {
     navigation.navigate('Login');
   };
   const navigateToMainScreen = () => {
-    navigation.navigate('MainScreen');
+    if (name.trim() && email.trim() && password.trim()) {
+      navigation.navigate('MainScreen');
+    } else {
+      // Show an error message or handle the case where inputs are not filled
+      alert('Please fill in all fields');
+    }
   };
   const navigateToSplashScreen = () => {
     navigation.reset({
@@ -29,7 +34,7 @@ const SignUp = () => {
   const validateName = (name) => {
     const regex = /^[a-zA-Z\s]+$/;
     if (!regex.test(name)) {
-      setNameError('Name must contain only letters and spaces');
+      setNameError('** Name must contain only letters and spaces **');
     } else {
       setNameError('');
     }
@@ -38,7 +43,7 @@ const SignUp = () => {
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(email)) {
-      setEmailError('Invalid em format');
+      setEmailError('** Invalid email format **');
     } else {
       setEmailError('');
     }
@@ -46,101 +51,128 @@ const SignUp = () => {
 
   const validatePassword = (password) => {
     if (password.length < 6) {
-      setPasswordError('Password must be at least 6 characters long');
+      setPasswordError('** Password must be at least 6 characters long **');
     } else {
       setPasswordError('');
     }
   };
 
+  const handleBlurName = () => {
+    if (!name.trim()) {
+      setNameError('** Please fill in your name **');
+    } else {
+      setNameError('');
+    }
+  };
+
+  const handleBlurEmail = () => {
+    if (!email.trim()) {
+      setEmailError('** Please fill in your email **');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const handleBlurPassword = () => {
+    if (!password.trim()) {
+      setPasswordError('** Please fill in your password **');
+    } else {
+      setPasswordError('');
+    }
+  };
   return (
     <View>
-      <StatusBar backgroundColor="white" barStyle="light-content" />
-      <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
-        <AntIcon name='left' size={30} color="#000" />
-      </TouchableOpacity>
-      <View style={styles.Title}>
-        <Text style={styles.TitleText}>Sign up</Text>
+    <StatusBar backgroundColor="white" barStyle="light-content" />
+    <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
+      <AntIcon name='left' size={30} color="#000" />
+    </TouchableOpacity>
+    <View style={styles.Title}>
+      <Text style={styles.TitleText}>Sign up</Text>
+    </View>
+
+    <View style={styles.maintextinput}>
+      <View style={styles.inputContainer}>
+        <Text style={styles.placeholder}>Name</Text>
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#888"
+          placeholder='Mr. Muffin'
+          value={name}
+          onChangeText={(text) => {
+            setName(text);
+            validateName(text);
+          }}
+          onBlur={handleBlurName} // Add onBlur event handler
+        />
+        {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
       </View>
 
-      <View style={styles.maintextinput}>
-        <View style={styles.inputContainer}>
-          <Text style={styles.placeholder}>Name</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor="#888"
-            placeholder='Mr. Muffin'
-            value={name}
-            onChangeText={(text) => {
-              setName(text);
-              validateName(text);
-            }}
-          />
-          {nameError ? <Text style={styles.errorText}>{nameError}</Text> : null}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.placeholder}>Email</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor="#888"
-            keyboardType="email-address"
-            placeholder='mrmuff@example.com'
-            value={email}
-            onChangeText={(text) => {
-              setEmail(text);
-              validateEmail(text);
-            }}
-          />
-          {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
-        </View>
-
-        <View style={styles.inputContainer}>
-          <Text style={styles.placeholder}>Password</Text>
-          <TextInput
-            style={styles.input}
-            placeholderTextColor="#888"
-            secureTextEntry={true}
-            placeholder="Password"
-            value={password}
-            onChangeText={(text) => {
-              setPassword(text);
-              validatePassword(text);
-            }}
-          />
-          {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
-        </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.placeholder}>Email</Text>
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#888"
+          keyboardType="email-address"
+          placeholder='mrmuff@example.com'
+          value={email}
+          onChangeText={(text) => {
+            setEmail(text);
+            validateEmail(text);
+          }}
+          onBlur={handleBlurEmail} // Add onBlur event handler
+        />
+        {emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
       </View>
 
-      <View style={styles.account}>
-        <TouchableOpacity onPress={navigateToLoginScreen}>
-          <View style={styles.accountTextContainer}>
-            <Text style={styles.accountText}>Already have an account?</Text>
-            <AntIcon name="arrowright" size={20} color="#DB3022" />
-          </View>
-        </TouchableOpacity>
-      </View>
-
-      <View>
-        <TouchableOpacity style={styles.signInButton} onPress={navigateToMainScreen}>
-          <Text style={styles.signInButtonText}>SIGN UP</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.footer}>
-        <Text style={styles.text}>Or sign up with social account</Text>
-        <View style={styles.iconContainer}>
-          <TouchableOpacity style={styles.icon}>
-            <FontAwesome name="google" size={30} color="#4285F4" />
-          </TouchableOpacity>
-          <View style={styles.gap} />
-          <TouchableOpacity style={styles.icon}>
-            <FontAwesome name="facebook" size={30} color="#3b5998" />
-          </TouchableOpacity>
-        </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.placeholder}>Password</Text>
+        <TextInput
+          style={styles.input}
+          placeholderTextColor="#888"
+          secureTextEntry={true}
+          placeholder="Password"
+          value={password}
+          onChangeText={(text) => {
+            setPassword(text);
+            validatePassword(text);
+          }}
+          onBlur={handleBlurPassword} // Add onBlur event handler
+        />
+        {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
       </View>
     </View>
-  );
+
+    <View style={styles.account}>
+      <TouchableOpacity onPress={navigateToLoginScreen}>
+        <View style={styles.accountTextContainer}>
+          <Text style={styles.accountText}>Already have an account?</Text>
+          <AntIcon name="arrowright" size={20} color="#DB3022" />
+        </View>
+      </TouchableOpacity>
+    </View>
+
+    <View>
+      <TouchableOpacity style={styles.signInButton} onPress={navigateToMainScreen}>
+        <Text style={styles.signInButtonText}>SIGN UP</Text>
+      </TouchableOpacity>
+    </View>
+
+    <View style={styles.footer}>
+      <Text style={styles.text}>Or sign up with social account</Text>
+      <View style={styles.iconContainer}>
+        <TouchableOpacity style={styles.icon}>
+          <FontAwesome name="google" size={30} color="#4285F4" />
+        </TouchableOpacity>
+        <View style={styles.gap} />
+        <TouchableOpacity style={styles.icon}>
+          <FontAwesome name="facebook" size={30} color="#3b5998" />
+        </TouchableOpacity>
+      </View>
+    </View>
+  </View>
+);
 };
+
 
 export default SignUp;
 
