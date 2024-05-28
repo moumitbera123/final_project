@@ -27,7 +27,7 @@ const ForgotPassword = () => {
         <AntIcon name='left' size={30} color="#000" />
       </TouchableOpacity>
       <View style={styles.Title}>
-        <Text style={styles.TitleText}>Forgo password</Text>
+        <Text style={styles.TitleText}>Forgot password</Text>
       </View>
       <View style={styles.InputDescription}>
         <Text style={styles.InputDescriptionText}>
