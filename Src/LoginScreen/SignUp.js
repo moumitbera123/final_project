@@ -38,7 +38,7 @@ const SignUp = () => {
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(email)) {
-      setEmailError('Invalid email format');
+      setEmailError('Invalid em format');
     } else {
       setEmailError('');
     }
