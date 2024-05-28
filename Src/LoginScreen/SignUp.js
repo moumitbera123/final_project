@@ -54,7 +54,7 @@ const SignUp = () => {
 
   return (
     <View>
-      <StatusBar backgroundColor="#f5fff8" barStyle="light-content" />
+      <StatusBar backgroundColor="white" barStyle="light-content" />
       <TouchableOpacity style={styles.AntIcons} onPress={navigateToSplashScreen}>
         <AntIcon name='left' size={30} color="#000" />
       </TouchableOpacity>
