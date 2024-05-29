@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
 import AntIcon from 'react-native-vector-icons/AntDesign';
+
 import { useNavigation } from '@react-navigation/native';
 
 const ForgotPassword = () => {
@@ -11,7 +12,9 @@ const ForgotPassword = () => {
   const navigateToLoginScreen = () => {
     navigation.navigate('Login');
   };
-
+  const navigateToOtpScreen = () =>{
+    navigation.navigate('OtpScreen')
+  }
   const validateEmail = (email) => {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!regex.test(email)) {
@@ -65,8 +68,8 @@ const ForgotPassword = () => {
       ) : null}
 
       <View>
-        <TouchableOpacity style={styles.SendButton}>
-          <Text style={styles.SendButtonText}>SEND</Text>
+        <TouchableOpacity style={styles.SendButton} onPress={navigateToOtpScreen}>
+          <Text style={styles.SendButtonText} >SEND</Text>
         </TouchableOpacity>
       </View>
     </View>
