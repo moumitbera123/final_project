@@ -11,6 +11,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const Bottom = createBottomTabNavigator();
 
 const BottomNavigation = () => {
+  
   return (
     <Bottom.Navigator
       screenOptions={({ route }) => ({                                                             

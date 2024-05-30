@@ -8,7 +8,7 @@ const Splash = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      navigation.navigate('ForgotPassword');
+      navigation.navigate('OnbordingScreen');
     }, 2000);
     return () => clearTimeout(timer);
   }, [navigation]);
