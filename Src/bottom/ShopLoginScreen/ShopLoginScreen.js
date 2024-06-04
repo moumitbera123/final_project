@@ -6,7 +6,7 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
   const ShopLoginScreen = () => {
   const navigation = useNavigation();
   const navigateSignUpScreen = () => {
-    navigation.navigate('SignUp');
+    navigation.navigate('Login');
   }
   const navigateToHomeScreen = () =>{
     navigation.navigate('Home');

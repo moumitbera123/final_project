@@ -11,6 +11,10 @@ import OnbordingScreen from './OnbordingScreen/OnbordingScreen';
 import OtpScreen from './OTP/OtpScreen';
 import ShopLoginScreen from './bottom/ShopLoginScreen/ShopLoginScreen';
 import HomeBanner from './HomeScreenBanner/HomeBanner';
+import ViewAllNew from './HomeScreenBanner/ViewAllNew';
+import ViewAllSale from './HomeScreenBanner/ViewAllSale';
+import BottomSheet from './bottom/Settings/BottomSheet';
+
 
 
 const Stack = createStackNavigator();
@@ -20,8 +24,9 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
-
+       
         <Stack.Screen name='OnbordingScreen' component={OnbordingScreen}/>
+  
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
@@ -30,7 +35,11 @@ const AppNavigator = () => {
 
         <Stack.Screen name="MainScreen" component={MainScreen} />
         <Stack.Screen name='HomeBanner' component={HomeBanner}/>
+      <Stack.Screen name='ViewAllNew' component={ViewAllNew}/>
+      <Stack.Screen name='ViewAllSale' component={ViewAllSale}/>
         <Stack.Screen name='ShopLoginScreen' component={ShopLoginScreen}/>
+        <Stack.Screen name='BottomSheet' component={BottomSheet}/>
+     
       </Stack.Navigator>
     </NavigationContainer>
   );
