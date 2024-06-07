@@ -363,6 +363,7 @@ export default HomeBanner;
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
+    marginTop:5
   },
   // column: {
   //     flex: 1,
@@ -372,7 +373,7 @@ const styles = StyleSheet.create({
     width: 201,
     height: 405,
     marginLeft: 5,
-    marginTop: 30,
+    marginTop: 35,
   },
   img2: {
     width: 170,
@@ -425,7 +426,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 5,
     left: 10,
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: '#000000',
     zIndex: 1,
@@ -438,10 +439,11 @@ const styles = StyleSheet.create({
 
   },
   overlayImage: {
-    width: 190,
+    width: 180,
     height: 200,
     position: 'absolute',
     borderRadius: 25,
+    marginLeft:5
   },
   iconContainer: {
     flexDirection: 'row', // Change to column

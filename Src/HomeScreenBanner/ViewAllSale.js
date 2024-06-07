@@ -2,7 +2,8 @@ import React from 'react';
 import { View, Text, Image, ImageBackground, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
 import Icon from 'react-native-vector-icons/FontAwesome';
-
+import { useNavigation } from '@react-navigation/native';
+import AntIcon from 'react-native-vector-icons/AntDesign';
 const data = [
   { id: '1', image: 'https://media.istockphoto.com/id/915320148/photo/elegant-young-woman-is-looking-away-smiling-and-thinking.webp?b=1&s=170667a&w=0&k=20&c=UI1F4Zw6TkiFSdeCIAj7ZxXY4JVXREu4hviYtnfcl_M=' },
   { id: '2', image: 'https://images.unsplash.com/photo-1505632958218-4f23394784a6?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8bWVuJTIwdHNoaXJ0fGVufDB8fDB8fHww' },
@@ -17,61 +18,67 @@ const data = [
 ];
 
 const ViewAllSale = () => {
-  
+  const navigation = useNavigation();
+  const navigateToScreen1 = () => {
+    navigation.navigate('Screen1')
+  }
   const renderItem = ({ item }) => (
 
-   
-      <TouchableOpacity >
-        <ImageBackground
-          style={[styles.newimg, { opacity: 0.8 }]}
-          source={{ uri: 'https://media.istockphoto.com/id/1370544962/photo/white-paper-background-fibrous-cardboard-texture-for-scrapbooking.webp?b=1&s=170667a&w=0&k=20&c=xr9AiLxrwsEeG2heLhc7tGqgBYOtdQBb1EH2LLETxRc=' }}
-          borderRadius={25}
-        >
-          <Image
-            style={styles.overlayImage}
-            source={{ uri: item.image }}
-          />
-          <View style={styles.roundTextContainer}>
-            <Text style={styles.roundText}>-20%</Text>
-          </View>
-          <View style={styles.iconContainer}>
-            <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
-            <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
-            <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
-            <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
-            <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
-          </View>
-          <View style={styles.textContainer}>
-            <Text style={styles.brandText}>Dorothy Perkins</Text>
-            <Text style={styles.productText}>Evening Dress</Text>
-          </View>
-          <TouchableOpacity style={styles.loveIconContainer}>
-            <Icon name="heart" size={20} color="red" style={styles.loveIcon} />
-          </TouchableOpacity>
-          <View style={styles.priceContainer}>
-            <Text style={styles.priceText}>10$</Text>
-          </View>
-        </ImageBackground>
-      </TouchableOpacity>
+
+    <TouchableOpacity >
+      <ImageBackground
+        style={[styles.newimg, { opacity: 0.8 }]}
+        source={{ uri: 'https://media.istockphoto.com/id/1370544962/photo/white-paper-background-fibrous-cardboard-texture-for-scrapbooking.webp?b=1&s=170667a&w=0&k=20&c=xr9AiLxrwsEeG2heLhc7tGqgBYOtdQBb1EH2LLETxRc=' }}
+        borderRadius={25}
+      >
+        <Image
+          style={styles.overlayImage}
+          source={{ uri: item.image }}
+        />
+        <View style={styles.roundTextContainer}>
+          <Text style={styles.roundText}>-20%</Text>
+        </View>
+        <View style={styles.iconContainer}>
+          <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
+          <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
+          <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
+          <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
+          <MaterialIcon name="star" size={20} color="#ffa200" style={styles.icon} />
+        </View>
+        <View style={styles.textContainer}>
+          <Text style={styles.brandText}>Dorothy Perkins</Text>
+          <Text style={styles.productText}>Evening Dress</Text>
+        </View>
+        <TouchableOpacity style={styles.loveIconContainer}>
+          <Icon name="heart" size={20} color="red" style={styles.loveIcon} />
+        </TouchableOpacity>
+        <View style={styles.priceContainer}>
+          <Text style={styles.priceText}>10$</Text>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
 
   );
 
 
   return (
     <View style={{ flex: 1 }}>
-    {/* "New Releases" text */}
-    <Text style={styles.newReleasesText}>Sale Items</Text>
-
-    {/* FlatList */}
-    <FlatList
-      data={data}
-      renderItem={renderItem}
-      keyExtractor={item => item.id}
-      numColumns={2}
-      contentContainerStyle={styles.flatListContent}
-      key={2}  // Added key prop to force re-render when numColumns changes
-    />
-  </View>
+      <View style={styles.container}>
+        <TouchableOpacity style={styles.AntIcons} onPress={navigateToScreen1}>
+          <AntIcon name='left' size={30} color="#000" />
+        </TouchableOpacity>
+        <Text style={styles.newReleasesText}>Sale Items</Text>
+      </View>
+      {/* FlatList */}
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+        numColumns={2}
+        contentContainerStyle={styles.flatListContent}
+        key={2}  // Added key prop to force re-render when numColumns changes
+      />
+    </View>
   );
 }
 
@@ -151,10 +158,11 @@ const styles = StyleSheet.create({
 
   },
   overlayImage: {
-    width: 190,
+    width: 180,
     height: 200,
     position: 'absolute',
     borderRadius: 25,
+    marginLeft: 5
   },
   iconContainer: {
     flexDirection: 'row', // Change to column
@@ -274,13 +282,28 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 16,
   },
-  
+
   newReleasesText: {
     fontSize: 26,
     fontWeight: '700',
     textAlign: 'center',
     marginTop: 20,
-    color:'#222222'
+    color: '#222222'
+  },
+  
+  newReleasesText: {
+    fontSize: 26,
+    fontWeight: '700',
+    textAlign: 'center',
+    marginTop: 15,
+    marginLeft: 70,
+    color: '#222222'
+  },
+  AntIcons: {
+    width: 50,
+    height: 50,
+    marginTop: 10,
+    marginLeft: 10,
   },
 
 });

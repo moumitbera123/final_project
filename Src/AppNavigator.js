@@ -13,7 +13,7 @@ import ShopLoginScreen from './bottom/ShopLoginScreen/ShopLoginScreen';
 import HomeBanner from './HomeScreenBanner/HomeBanner';
 import ViewAllNew from './HomeScreenBanner/ViewAllNew';
 import ViewAllSale from './HomeScreenBanner/ViewAllSale';
-import BottomSheet from './bottom/Settings/BottomSheet';
+
 
 
 
@@ -38,7 +38,7 @@ const AppNavigator = () => {
       <Stack.Screen name='ViewAllNew' component={ViewAllNew}/>
       <Stack.Screen name='ViewAllSale' component={ViewAllSale}/>
         <Stack.Screen name='ShopLoginScreen' component={ShopLoginScreen}/>
-        <Stack.Screen name='BottomSheet' component={BottomSheet}/>
+  
      
       </Stack.Navigator>
     </NavigationContainer>

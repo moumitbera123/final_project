@@ -1,6 +1,7 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet } from 'react-native'
 import React from 'react'
 import { createDrawerNavigator } from '@react-navigation/drawer'
+import { createStackNavigator } from '@react-navigation/stack';
 
 import Screen1 from './Screens/Screen1';
 
@@ -11,9 +12,12 @@ import Favorites from '../bottom/bottomScreens/Favorites';
 import Profile from '../bottom/bottomScreens/Profile';
 
 const Drawer = createDrawerNavigator();
+
+
+
 const DrawerNavigator = () => {
   return (
-   <Drawer.Navigator screenOptions={{headerShown:true}}>
+   <Drawer.Navigator screenOptions={{headerShown:false}}>
     <Drawer.Screen name='Screen1' component={Screen1}/>
 
     <Drawer.Screen name='Home' component={Home}/>

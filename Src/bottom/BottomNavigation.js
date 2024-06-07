@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from './bottomScreens/Home';
-import Shop from './bottomScreens/Shop';
+// import Shop from './bottomScreens/Shop';
 import Bag from './bottomScreens/Bag';
 import Favorites from './bottomScreens/Favorites';
 import Profile from './bottomScreens/Profile';
@@ -22,9 +22,9 @@ const BottomNavigation = () => {
             case 'Home':
               iconName = 'home-outline';
               break;
-            case 'Shop':
-              iconName = 'cart-outline';
-              break;
+            // case 'Shop':
+            //   iconName = 'cart-outline';
+            //   break;
             case 'Bag':
               iconName = 'bag-outline';
               break;
@@ -53,7 +53,7 @@ const BottomNavigation = () => {
       }}
     >
       <Bottom.Screen name="Home" component={Home} options={{ headerShown: false }} />
-      <Bottom.Screen name="Shop" component={Shop} options={{ headerShown: false }}/>
+      {/* <Bottom.Screen name="Shop" component={Shop} options={{ headerShown: false }}/> */}
       <Bottom.Screen name="Bag" component={Bag} options={{ headerShown: false }}/>
       <Bottom.Screen name="Favorites" component={Favorites} options={{ headerShown: false }}/>
       <Bottom.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>

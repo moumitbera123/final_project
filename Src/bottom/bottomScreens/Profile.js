@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
+import React ,{useRef}from 'react'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-
+import RBSheet from 'react-native-raw-bottom-sheet';
+import { ScrollView } from 'react-native-gesture-handler';
 const Profile = () => {
-
+  const refRBSheet = useRef();
   
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.seacrchicon}>
         <MaterialIcon name="search" size={32} color="#000" />
@@ -77,18 +79,37 @@ const Profile = () => {
           </View>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity >
-        <View style={styles.orders}>
-          <Text style={styles.orderstitle}>Settings</Text>
-          <Text style={styles.ordersdescription}>Notifications, password</Text>
-          <View style={styles.arrowicon}>
-            <MaterialIcon name="keyboard-arrow-right" size={33} color="#9B9B9B" />
+        <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+          <View style={styles.orders}>
+            <Text style={styles.orderstitle}>Settings</Text>
+            <Text style={styles.ordersdescription}>Notifications, password</Text>
+            <View style={styles.arrowicon}>
+              <MaterialIcon name="keyboard-arrow-right" size={33} color="#9B9B9B" />
+            </View>
           </View>
-        </View>
         </TouchableOpacity>
       </View>
 
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={true}
+        customStyles={{
+          wrapper: {
+            backgroundColor: "rgba(0,0,0,0.5)"
+          },
+          draggableIcon: {
+            backgroundColor: "#000"
+          }
+        }}
+      >
+        <View style={styles.bottomSheetContent}>
+          <Text style={styles.sheetTitle}>Settin                                                                                                                                                                                                                   gs</Text>
+          <Text>Here you can manage your notifications, change password, etc.</Text>
+        </View>
+      </RBSheet>
     </View>
+    </ScrollView>
   )
 }
 
@@ -146,5 +167,16 @@ const styles = StyleSheet.create({
   },
   container2:{
     bottom:70
-  }
+  },
+  bottomSheetContent: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sheetTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
 })

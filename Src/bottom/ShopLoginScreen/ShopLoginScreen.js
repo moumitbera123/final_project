@@ -8,12 +8,12 @@ import AntIcon from 'react-native-vector-icons/AntDesign';
   const navigateSignUpScreen = () => {
     navigation.navigate('Login');
   }
-  const navigateToHomeScreen = () =>{
-    navigation.navigate('Home');
+  const navigateToScreen1 = () =>{
+    navigation.navigate('Screen1');
   }
   return (
     <View style={styles.container}>
-       <TouchableOpacity style={styles.AntIcons} onPress={navigateToHomeScreen}>
+       <TouchableOpacity style={styles.AntIcons} onPress={navigateToScreen1}>
         <AntIcon name='left' size={30} color="#000" />
       </TouchableOpacity>
       <Text style={styles.title}>Book a Hotel and pay for Only the time you stay</Text>
