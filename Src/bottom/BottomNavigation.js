@@ -7,6 +7,7 @@ import Bag from './bottomScreens/Bag';
 import Favorites from './bottomScreens/Favorites';
 import Profile from './bottomScreens/Profile';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Categories from './bottomScreens/Categories';
 
 const Bottom = createBottomTabNavigator();
 
@@ -28,6 +29,9 @@ const BottomNavigation = () => {
             case 'Bag':
               iconName = 'bag-outline';
               break;
+              case 'Categories':
+                iconName = 'grid-outline';
+                break;
             case 'Favorites':
               iconName = 'heart-outline';
               break;
@@ -55,6 +59,7 @@ const BottomNavigation = () => {
       <Bottom.Screen name="Home" component={Home} options={{ headerShown: false }} />
       {/* <Bottom.Screen name="Shop" component={Shop} options={{ headerShown: false }}/> */}
       <Bottom.Screen name="Bag" component={Bag} options={{ headerShown: false }}/>
+      <Bottom.Screen name='Categories' component={Categories} options={{headerShown:false}}/>
       <Bottom.Screen name="Favorites" component={Favorites} options={{ headerShown: false }}/>
       <Bottom.Screen name="Profile" component={Profile} options={{ headerShown: false }}/>
     </Bottom.Navigator>

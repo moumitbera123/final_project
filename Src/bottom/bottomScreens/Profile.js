@@ -1,11 +1,18 @@
 import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React ,{useRef}from 'react'
 import MaterialIcon from 'react-native-vector-icons/MaterialIcons';
-import RBSheet from 'react-native-raw-bottom-sheet';
+// import RBSheet from 'react-native-raw-bottom-sheet';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+
 const Profile = () => {
   const refRBSheet = useRef();
-  
+  const navigation = useNavigation();
+
+
+  const navigatetosettingScreen = () =>{
+    navigation.navigate('SettingsScreen');
+  }
   return (
     <ScrollView>
     <View style={styles.container}>
@@ -79,7 +86,8 @@ const Profile = () => {
           </View>
         </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => refRBSheet.current.open()}>
+        {/* <TouchableOpacity onPress={navigatetosettingScreen} >                     /onPress={() => refRBSheet.current.open()} */}
+        <TouchableOpacity onPress={navigatetosettingScreen} >
           <View style={styles.orders}>
             <Text style={styles.orderstitle}>Settings</Text>
             <Text style={styles.ordersdescription}>Notifications, password</Text>
@@ -90,7 +98,7 @@ const Profile = () => {
         </TouchableOpacity>
       </View>
 
-      <RBSheet
+      {/* <RBSheet
         ref={refRBSheet}
         closeOnDragDown={true}
         closeOnPressMask={true}
@@ -107,7 +115,7 @@ const Profile = () => {
           <Text style={styles.sheetTitle}>Settin                                                                                                                                                                                                                   gs</Text>
           <Text>Here you can manage your notifications, change password, etc.</Text>
         </View>
-      </RBSheet>
+      </RBSheet> */}
     </View>
     </ScrollView>
   )

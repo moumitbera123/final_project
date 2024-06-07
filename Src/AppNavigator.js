@@ -13,6 +13,9 @@ import ShopLoginScreen from './bottom/ShopLoginScreen/ShopLoginScreen';
 import HomeBanner from './HomeScreenBanner/HomeBanner';
 import ViewAllNew from './HomeScreenBanner/ViewAllNew';
 import ViewAllSale from './HomeScreenBanner/ViewAllSale';
+import SettingsScreen from './bottom/bottomScreens/Settings/SettingsScreen';
+
+
 
 
 
@@ -38,8 +41,9 @@ const AppNavigator = () => {
       <Stack.Screen name='ViewAllNew' component={ViewAllNew}/>
       <Stack.Screen name='ViewAllSale' component={ViewAllSale}/>
         <Stack.Screen name='ShopLoginScreen' component={ShopLoginScreen}/>
-  
-     
+  <Stack.Screen name='SettingsScreen' component={SettingsScreen}/>
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );
