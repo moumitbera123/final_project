@@ -14,6 +14,9 @@ import HomeBanner from './HomeScreenBanner/HomeBanner';
 import ViewAllNew from './HomeScreenBanner/ViewAllNew';
 import ViewAllSale from './HomeScreenBanner/ViewAllSale';
 import SettingsScreen from './bottom/bottomScreens/Settings/SettingsScreen';
+import CategoriesViewAll from './bottom/CategoriesTabs/CategoriesViewAllItem/CategoriesViewAll';
+import Categories from './bottom/bottomScreens/Categories';
+import Womenitem from './bottom/CategoriesTabs/Screens/WomenItems/Womenitem';
 
 
 
@@ -27,9 +30,9 @@ const AppNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Splash" screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={Splash} />
-       
-        <Stack.Screen name='OnbordingScreen' component={OnbordingScreen}/>
-  
+
+        <Stack.Screen name='OnbordingScreen' component={OnbordingScreen} />
+
         <Stack.Screen name='SignUp' component={SignUp} />
         <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='ForgotPassword' component={ForgotPassword} />
@@ -37,13 +40,14 @@ const AppNavigator = () => {
 
 
         <Stack.Screen name="MainScreen" component={MainScreen} />
-        <Stack.Screen name='HomeBanner' component={HomeBanner}/>
-      <Stack.Screen name='ViewAllNew' component={ViewAllNew}/>
-      <Stack.Screen name='ViewAllSale' component={ViewAllSale}/>
-        <Stack.Screen name='ShopLoginScreen' component={ShopLoginScreen}/>
-  <Stack.Screen name='SettingsScreen' component={SettingsScreen}/>
-
-
+        <Stack.Screen name='HomeBanner' component={HomeBanner} />
+        <Stack.Screen name='ViewAllNew' component={ViewAllNew} />
+        <Stack.Screen name='ViewAllSale' component={ViewAllSale} />
+        <Stack.Screen name='ShopLoginScreen' component={ShopLoginScreen} />
+        <Stack.Screen name='SettingsScreen' component={SettingsScreen} />
+        <Stack.Screen name='CategoriesViewAll' component={CategoriesViewAll} />
+        <Stack.Screen name='Categories' component={Categories} />
+        <Stack.Screen name='Womenitem' component={Womenitem} />
       </Stack.Navigator>
     </NavigationContainer>
   );

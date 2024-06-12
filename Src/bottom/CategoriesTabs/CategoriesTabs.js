@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 const CategoriesTabs = () => {
   return (
 <Tab.Navigator         
-abBarOptions={{
+  tabBarOptions={{
     activeTintColor: '#DB3022',
     inactiveTintColor: '#9B9B9B',
     style: {
